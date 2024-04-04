@@ -1,0 +1,12 @@
+import ipywidgets as widgets
+name=widgets.Text(value="",description="Enter name")
+age = widgets.IntSlider(min=18, max=22,step=1,description=' Age')
+address=widgets.Textarea(placeholder="enter your address",description=' Address')
+course=widgets.Dropdown(options=[' ','CSE', 'ECE', 'EEE','MECH'],description='select course')
+gender=widgets.RadioButtons(options=['Male','Female'])
+button=widgets.Button(description='Submit',button_style='info')
+success=widgets.IntProgress(description='Status',bar_style='success')
+def on_button_click(button):
+    success.value = 100
+button.on_click(on_button_click)
+widgets.VBox([name,age,address,course,gender,button,success])
