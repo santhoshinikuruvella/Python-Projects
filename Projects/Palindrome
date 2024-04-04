@@ -1,0 +1,17 @@
+from ipywidgets import interact,interactive,Output
+import ipywidgets as widgets
+def palindrome(text):
+    if text:
+        x = text[::-1]
+        if x == text:
+            print("Given text is palindrome")
+            
+        else:
+            print("Given text is not palindrome")
+text = widgets.Text(value="",description="Enter text")
+button = widgets.Button(description="Submit",button_style='info')
+
+def on_button_clicked(func):
+     palindrome(text.value)
+button.on_click(on_button_clicked)
+widgets.VBox([text, button])
