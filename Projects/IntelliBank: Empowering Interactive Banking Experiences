@@ -1,0 +1,70 @@
+import tkinter as tk
+
+class Bank():
+    def __init__(self, name, acctnumber, balance):
+        self.name = name
+        self.acctnumber = acctnumber
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return f"The balance after deposit of {amount} is {self.balance}"
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            return f"The balance after withdrawal of {amount} is {self.balance}"
+        else:
+            return "Insufficient Balance"
+# Create instances of the Bank class
+santhu_account = Bank('santhu', 1234, 10500)
+omkar_account = Bank('omkar', 4567, 10000)
+
+
+def deposit_action():
+    acctnumber = int(acctnumber_entry.get())
+    amount = float(amount_entry.get())
+    if acctnumber == santhu_account.acctnumber:
+        result_label.config(text=santhu_account.deposit(amount))
+    elif acctnumber == omkar_account.acctnumber:
+        result_label.config(text=omkar_account.deposit(amount))
+    else:
+        result_label.config(text="Account not found")
+
+def withdraw_action():
+    acctnumber = int(acctnumber_entry.get())
+    amount = float(amount_entry.get())
+    if acctnumber == santhu_account.acctnumber:
+        result_label.config(text=santhu_account.withdraw(amount))
+    elif acctnumber == omkar_account.acctnumber:
+        result_label.config(text=omkar_account.withdraw(amount))
+    else:
+        result_label.config(text="Account not found")
+
+
+# GUI Setup
+root = tk.Tk()
+root.title("Banking System")
+# Labels
+acctnumber_label = tk.Label(root, text="Account Number:")
+acctnumber_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
+amount_label = tk.Label(root, text="Amount:")
+amount_label.grid(row=1, column=0, padx=10, pady=5, sticky="e")
+result_label = tk.Label(root, text="", fg="blue")
+
+# Entries
+acctnumber_entry = tk.Entry(root)
+acctnumber_entry.grid(row=0, column=1, padx=10, pady=5)
+amount_entry = tk.Entry(root)
+amount_entry.grid(row=1, column=1, padx=10, pady=5)
+
+# Buttons
+deposit_button = tk.Button(root, text="Deposit", command=deposit_action)
+deposit_button.grid(row=2, column=0, padx=10, pady=5)
+withdraw_button = tk.Button(root, text="Withdraw", command=withdraw_action)
+withdraw_button.grid(row=2, column=1, padx=10, pady=5)
+
+# Result Label
+result_label.grid(row=3, columnspan=2, padx=10, pady=5)
+
+root.mainloop()
