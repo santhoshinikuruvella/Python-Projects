@@ -1,0 +1,46 @@
+class Bank():
+    def __init__(self,name,acctnumber,balance):
+        self.name=name
+        self.acctnumber=acctnumber
+        self.balance = balance
+    def deposit(self,acctnumber,amount):
+        if acctnumber == self.acctnumber:
+            self.balance += amount
+        return f"The balance after desposite of {amount} is {self.balance}"
+    def withdraw(self,acctnumber,amount):
+        if acctnumber == self.acctnumber and amount <= self.balance:
+            self.balance -= amount
+            return f"The balance after withdrawal of {amount} is {self.balance}"
+        else:
+            print("Insufficient Balance")
+            return f"Available Balance:{self.balance}"
+       
+santhu_account = Bank('santhu', 1234, 10500)
+omkar_account = Bank('omkar', 4567, 10000)
+while True:
+    choice = int(input("enter 1 for desposite , 2 for withdrawal: "))
+    if choice == 1:
+        acctnumber = int(input("enter your acctnumber:"))
+        if acctnumber == santhu_account.acctnumber:
+            amount = int(input("enter the amount to deposit:"))
+            print(santhu_account.deposit(acctnumber,amount))
+        elif acctnumber == omkar_account.acctnumber:
+            amount = int(input("enter the amount to deposit:"))
+            print(omkar_account.deposit(acctnumber,amount))
+
+        else:
+            print("Account not found")
+    elif choice == 2:
+        acctnumber = int(input("enter your acctnumber:"))
+        if acctnumber == santhu_account.acctnumber:
+            amount = int(input("enter the amount to withdraw:"))
+            print(santhu_account.withdraw(acctnumber,amount))
+        elif acctnumber == omkar_account.acctnumber:
+            amount = int(input("enter the amount to withdraw:"))
+            print(omkar_account.withdraw(acctnumber,amount))
+        else:
+            print("Account not found")
+    else:
+        print("you have choosen to quit the process")
+        break
+
