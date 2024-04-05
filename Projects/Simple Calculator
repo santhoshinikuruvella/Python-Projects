@@ -1,0 +1,60 @@
+import tkinter as tk
+class Calculator():
+    def __init__(self):
+        pass
+
+    def addition(self, number1, number2):
+        return f"Sum of {number1} and {number2} is : {number1 + number2}"
+
+    def subtraction(self, number1, number2):
+        return f"Subtraction of {number1} and {number2} is : {number1 - number2}"
+
+    def division(self, number1, number2):
+        if number2 == 0:
+            return "Cannot divide by zero"
+        return f"Division of {number1} and {number2} is : {number1 / number2}"
+
+    def multiplication(self, number1, number2):
+        return f"Multiplication of {number1} and {number2} is : {number1 * number2}"
+
+myobj = Calculator()
+def addition_action():
+    number1 = int(number1_entry.get())
+    number2 = int(number2_entry.get())
+    result_label.config(text=myobj.addition(number1,number2))
+def subtraction_action():
+    number1 = int(number1_entry.get())
+    number2 = int(number2_entry.get())
+    result_label.config(text=myobj.subtraction(number1,number2))
+def division_action():
+    number1 = int(number1_entry.get())
+    number2 = int(number2_entry.get())
+    result_label.config(text=myobj.division(number1,number2))
+def multiplication_action():
+    number1 = int(number1_entry.get())
+    number2 = int(number2_entry.get())
+    result_label.config(text=myobj.multiplication(number1,number2))
+root = tk.Tk()
+root.title("Simple Calculator")
+#labels
+number1_label = tk.Label(root,text="Number1:",bg='lightgrey')
+number1_label.grid(row=0,column=0,padx=10,pady=5,sticky='e')
+number2_label = tk.Label(root,text="Number2:",bg='lightgrey')
+number2_label.grid(row=1,column=0,padx=10,pady=5,sticky='e')
+result_label = tk.Label(root,text="",bg="black",fg="white")
+result_label.grid(row=4,columnspan = 2 ,padx=10,pady=5)
+#entries
+number1_entry = tk.Entry(root,bg='lightyellow')
+number1_entry.grid(row=0,column=1,padx=10,pady=5,sticky='e')
+number2_entry = tk.Entry(root,bg='lightyellow')
+number2_entry.grid(row=1,column=1,padx=10,pady=5,sticky='e')
+addition_button = tk.Button(root,text="+",command=addition_action,bg="skyblue")
+addition_button.grid(row=2, column=0, padx=10, pady=5)
+subtraction_button = tk.Button(root,text="-",command=subtraction_action,bg="skyblue")
+subtraction_button.grid(row=2, column=1, padx=10, pady=5)
+multiplication_button = tk.Button(root,text="*",command=multiplication_action,bg='skyblue')
+multiplication_button.grid(row=3, column=0, padx=10, pady=5)
+division_button = tk.Button(root,text="+",command=division_action,bg="skyblue")
+division_button.grid(row=3, column=1, padx=10, pady=5)
+
+root.mainloop()
